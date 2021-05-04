@@ -1,0 +1,12 @@
+Recipes-
+
+Login/ register
+
+Create
+Edit 
+Destroy
+Like/unlike
+Tags
+Display of new db entries upon refresh
+
+There will be a banner that is yet to be decided which will contain all of the necessary links for navigation.
