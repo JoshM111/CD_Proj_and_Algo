@@ -74,47 +74,56 @@ equalsTo(newDate= (28,9));
 // Print and Count
 // Print all integer multiples of 5, from 512 to 4096. Afterward, also log how many there were.
 
-
-
-
-
-
-
+let y = 0;
+for ( x = 512; x< 4097; x++){
+    if(x % 5 === 0){
+        y = y+1;
+    }
+    console.log(x);
+}
+console.log(y);
 
 // Multiples of Six
 // Print multiples of 6 up to 60,000, using a WHILE.
 
-
-
-
-
-
-
+let x = 6;
+do {
+    x=x+6;
+    console.log(x)
+} while (x < 60000);
 
 // Counting, the Dojo Way
 // Print integers 1 to 100. If divisible by 5, print "Coding" instead. If by 10, also print " Dojo".
 
-
-
-
-
-
-
+for(x=1; x<101; x++){
+    if(x%5===0){
+        console.log("Number: " + x );
+        console.log("Coding");
+    } 
+    if (x%10===0) {
+        console.log("Number: " + x );
+        console.log("Dojo");
+    } 
+}
 
 // What Do You Know?
 // Your function will be given an input parameter incoming. Please console.log this value.
 
+function know(x) {
+    console.log(x);
+}
 
-
-
-
-
-
+know();
 
 // Whoa, That Sucker’s Huge…
 // Add odd integers from -300,000 to 300,000, and console.log the final sum. Is there a shortcut?
-
-
+let y = 0
+for(var x=-3; x<=3; x++){
+    if(x%2!=0){
+        y=y+x
+    }
+}
+console.log(y*100000);
 
 
 
@@ -124,7 +133,11 @@ equalsTo(newDate= (28,9));
 // Countdown by Fours
 // Log positive numbers starting at 2016, counting down by fours (exclude 0), without a FOR loop.
 
-
+let x = 2016;
+do {
+    console.log(x);
+    x=x-4;
+} while (x>0);
 
 
 
