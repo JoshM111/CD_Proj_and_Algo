@@ -1,0 +1,18 @@
+Recipes-
+
+Login/ register- users
+Login/ registration- admins
+Admins can do all user actions to all recipes.
+Users-
+Create recipes
+Edit- owned recipes
+Destroy- owned recipes
+Like/unlike- all recipes
+
+
+Tags
+Display of new db entries upon refresh
+
+There will be a banner that is yet to be decided which will contain all of the necessary links for navigation.
+
+I would like this website to become a library to maintain and catalog a minimum of 50%(regional) of the worlds recipes, and to reduce cookbook production by over 60%(to prevent further deforestation). In many parts of the world, French techniques have superseded the older, more traditional methods of cooking. Recipes that were created for a specific purpose, passed from parent to child, have become a relic of the past. With the current technological advances there is more of a reason to archive these thoughts and ideas before they are lost. This website will allow anyone to view culinary history as it was and what it has become now in real time. 
