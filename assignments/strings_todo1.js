@@ -62,6 +62,17 @@ function noShorts(arr){
 }
 console.log(noShorts(["asdas", "asdassdsadas", "asdasdsad", "a", "dddd", "ss", "asdadasd"]));
 
-
-
-
+// actual answer:
+function removeShort(strArr, val) {
+    for (var ind = strArr.length-1; ind >= 0; ind--) {
+        if (strArr[ind].length < val) {
+            for (var i = ind; i < strArr.length-1; i++){
+                var temp = strArr[i];
+                strArr[i] = strArr[i+1];
+                strArr[i+1] = temp;
+            }
+            strArr.pop();
+        }
+    }
+    return strArr;
+}
