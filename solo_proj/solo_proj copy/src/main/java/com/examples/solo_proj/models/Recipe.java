@@ -27,6 +27,8 @@ public class Recipe {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
 	@NotBlank
+	private String name;
+	@NotBlank
 	private String directions;
 	@Column(updatable = false)
 	//^ this applies only to the line directly after
@@ -53,9 +55,11 @@ public class Recipe {
 //	//
 	public Recipe() {
 	}
-	public Recipe(Long id, @NotBlank String directions, Date createdAt, Date updatedAt, List<Ingredient> ingredients,
-			User creator, List<User> likedRecipes) {
+
+	public Recipe(Long id, @NotBlank String name, @NotBlank String directions, Date createdAt, Date updatedAt,
+			List<Ingredient> ingredients, User creator, List<User> likedRecipes) {
 		this.id = id;
+		this.name = name;
 		this.directions = directions;
 		this.createdAt = createdAt;
 		this.updatedAt = updatedAt;
@@ -68,6 +72,12 @@ public class Recipe {
 	}
 	public void setId(Long id) {
 		this.id = id;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
 	}
 	public String getDirections() {
 		return directions;

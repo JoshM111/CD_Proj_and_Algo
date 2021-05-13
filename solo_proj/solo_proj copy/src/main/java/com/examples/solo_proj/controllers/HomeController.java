@@ -81,7 +81,7 @@ public class HomeController {
 		return "index.jsp";
 	}
 	@GetMapping("/recipes/new")
-	public String add(@ModelAttribute("recipe") Recipe recipe) {
+	public String add(@ModelAttribute("recipe" + "ingredient") Recipe recipe, Ingredient ing) {
 		return "new.jsp";
 	}
 	@PostMapping("/recipes/new/post")
@@ -90,6 +90,7 @@ public class HomeController {
 		Long recipeId = (long)session.getAttribute("recipe__id");
 		Recipe rec=this.rService.findRecipe(recipeId);
 		User user=this.uService.find(userId);
+		
 		if(result.hasErrors()) {
 			List<Recipe> recipes= this.rService.getAllRecipes();
 			List<Ingredient> ings= this.iService.getAllIngs();
@@ -97,18 +98,29 @@ public class HomeController {
 			viewModel.addAttribute("user", user);
 			viewModel.addAttribute("allIngs", ings);
 			viewModel.addAttribute("recipe", rec);
-			return "index.jsp";
+			return "new.jsp";
 		}else {
+			Long ingId = (long)session.getAttribute("ingredient__id");
+//			List<ingName> ingName = (String)session.getAttribute("ingredient__name");
+//			List<ingMm> ingMm = (String)session.getAttribute("ingredient__measurement");
+//			List<ingAmnt> ingAmnt = (double)session.getAttribute("ingredient__amount");
 			rec.setCreator(user);
 			ing.setItem(recipe);
 			this.iService.createIng(ing);
 			this.rService.createRecipe(recipe);
 			return "redirect:/recipes";
 		}
+//		for() {
+//		    name  = sessionStorage.getAttribute("name");
+//		    for ( x = 0; x  < name.length; x ++) {
+//		        createIngredient(name[x], quantity[x]);
+//		    })
 	}
+//	add jquery
 	@GetMapping("/recipes/{id}")
-	public String show(@PathVariable("id") Long id, Model viewModel, @ModelAttribute("recipe") Recipe recipe) {
+	public String show(@PathVariable("id") Long id, Model viewModel, @ModelAttribute("recipe" + "ingredient") Recipe recipe, Ingredient ing) {
 		viewModel.addAttribute("recipe", this.rService.getOneRecipe(id));
+		viewModel.addAttribute("ingredient", this.iService.getOneIng(id));
 		return "show.jsp";
 	}
 //	

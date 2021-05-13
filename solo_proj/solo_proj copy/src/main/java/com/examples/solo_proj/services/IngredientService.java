@@ -17,7 +17,16 @@ private IngredientRepository iRepo;
 	public Ingredient getOneIng(Long id) {
 		return this.iRepo.findById(id).orElse(null);
 	}
-
+//	public Ingredient addIng(Ingredient addIng) {
+//		for( x =0; x<name.length; x ++) {
+//			createIng(name[x], amount[x], measurement[x]);
+//		}
+//	}
+//	function () {
+//	    name  = sessionStorage.getAttribute("name");
+//	    for ( x = 0; x  < name.length; x ++) {
+//	        createIngredient(name[x], quantity[x]);
+//	    }
 	public Ingredient createIng(Ingredient newIngredient) {
 		return this.iRepo.save(newIngredient);
 	}
