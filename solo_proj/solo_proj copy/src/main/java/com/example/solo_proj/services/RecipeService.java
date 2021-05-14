@@ -1,11 +1,12 @@
-package com.examples.solo_proj.services;
+package com.example.solo_proj.services;
 
 import java.util.List;
 import java.util.Optional;
 import org.springframework.stereotype.Service;
-import com.example.solo_proj.repositorites.RecipeRepository;
-import com.examples.solo_proj.models.Recipe;
-import com.examples.solo_proj.models.User;
+
+import com.example.solo_proj.models.Recipe;
+import com.example.solo_proj.models.User;
+import com.example.solo_proj.repositories.RecipeRepository;
 
 @Service
 public class RecipeService {

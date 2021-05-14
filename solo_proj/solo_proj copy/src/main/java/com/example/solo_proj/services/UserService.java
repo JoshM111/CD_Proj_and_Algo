@@ -1,4 +1,4 @@
-package com.examples.solo_proj.services;
+package com.example.solo_proj.services;
 
 import java.util.List;
 
@@ -6,8 +6,8 @@ import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.solo_proj.repositorites.UserRepository;
-import com.examples.solo_proj.models.User;
+import com.example.solo_proj.models.User;
+import com.example.solo_proj.repositories.UserRepository;
 
 @Service
 public class UserService {

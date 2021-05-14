@@ -1,4 +1,4 @@
-package com.examples.solo_proj.models;
+package com.example.solo_proj.models;
 
 import java.util.Date;
 import java.util.List;

@@ -1,4 +1,4 @@
-package com.examples.solo_proj.controllers;
+package com.example.solo_proj.controllers;
 
 import java.util.List;
 
@@ -16,13 +16,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.examples.solo_proj.models.Ingredient;
-import com.examples.solo_proj.models.Recipe;
-import com.examples.solo_proj.models.User;
-import com.examples.solo_proj.services.IngredientService;
-import com.examples.solo_proj.services.RecipeService;
-import com.examples.solo_proj.services.UserService;
-import com.examples.solo_proj.validators.UserValidator;
+import com.example.solo_proj.models.Ingredient;
+import com.example.solo_proj.models.Recipe;
+import com.example.solo_proj.models.User;
+import com.example.solo_proj.services.IngredientService;
+import com.example.solo_proj.services.RecipeService;
+import com.example.solo_proj.services.UserService;
+import com.example.solo_proj.validators.UserValidator;
 
 @Controller
 public class HomeController {
@@ -81,32 +81,35 @@ public class HomeController {
 		return "index.jsp";
 	}
 	@GetMapping("/recipes/new")
-	public String add(@ModelAttribute("recipe" + "ingredient") Recipe recipe, Ingredient ing) {
+	public String add(@ModelAttribute("recipe") Recipe recipe) {
 		return "new.jsp";
 	}
 	@PostMapping("/recipes/new/post")
-	public String add(@Valid @ModelAttribute("recipe" + "ingredient") Recipe recipe, Ingredient ing, BindingResult result, HttpSession session, Model viewModel) {
+	public String addRecipe(@Valid @ModelAttribute("recipe") Recipe recipe, BindingResult result, HttpSession session, Model viewModel) {
 		Long userId = (long)session.getAttribute("user__id");
-		Long recipeId = (long)session.getAttribute("recipe__id");
-		Recipe rec=this.rService.findRecipe(recipeId);
+//		Long recipeId = (long)session.getAttribute("recipe__id");
+//		Recipe rec=this.rService.findRecipe(recipeId);
 		User user=this.uService.find(userId);
 		
 		if(result.hasErrors()) {
 			List<Recipe> recipes= this.rService.getAllRecipes();
-			List<Ingredient> ings= this.iService.getAllIngs();
 			viewModel.addAttribute("allRecipes", recipes);
 			viewModel.addAttribute("user", user);
-			viewModel.addAttribute("allIngs", ings);
-			viewModel.addAttribute("recipe", rec);
+
 			return "new.jsp";
+//		}else if(resultIng.hasErrors()){
+//			List<Ingredient> ings= this.iService.getAllIngs();
+//			viewModel.addAttribute("allIngs", ings);
+//			viewModel.addAttribute("recipe", rec);
+//			return "new.jsp";
 		}else {
-			Long ingId = (long)session.getAttribute("ingredient__id");
+//			Long ingId = (long)session.getAttribute("ingredient__id");
 //			List<ingName> ingName = (String)session.getAttribute("ingredient__name");
 //			List<ingMm> ingMm = (String)session.getAttribute("ingredient__measurement");
 //			List<ingAmnt> ingAmnt = (double)session.getAttribute("ingredient__amount");
-			rec.setCreator(user);
-			ing.setItem(recipe);
-			this.iService.createIng(ing);
+			recipe.setCreator(user);
+//			ing.setItem(recipe);
+//			this.iService.createIng(ing);
 			this.rService.createRecipe(recipe);
 			return "redirect:/recipes";
 		}

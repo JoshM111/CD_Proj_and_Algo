@@ -38,17 +38,16 @@
 <body>
 <div class ="container">
 	<div class="form-group">
-		<form:form action="/recipes/new" method="post" modelAttribute="recipe">
+		<form:form action="/recipes/new/post" method="POST" modelAttribute="recipe">
 			<table>
 			    <tr>
-			      	<td>Title: </td>
 			      	<td>
-				      	<form:label path="name">
+				      	<form:label path="name"> Title: 
 						<form:errors path="name"/>
 						<form:input path="name"/></form:label>
 					</td>
 			    </tr>
-			<form:form action="/ingredients/new" method="POST" mdoelAttribute="ingredient">
+<%-- 				<form:form action="/recipes/new" method="POST" mdoelAttribute="ingredient">
 		    	<tr class="cloned input">
 			    	<td>Ingredients: </td>
 			      	<td>
@@ -66,13 +65,19 @@
 						<form:errors path="measurement"/>
 						<form:input path="measurement"/></form:label>
 					</td>
+				</tr> --%>
+				<!-- <tr>
+				<div class="appendhere">
+				
+				</div>
 				</tr>
-				<div class="appendhere"></div>
+				<tr>
 					<button class="add">Add Ingredient</button>
 				    <button class="remove">Remove Ingredient</button>
-			</form:form>
+				</tr> -->
+<%-- 			</form:form> --%>
 			    <tr>
-			      	<td>Directions:  </td>
+<!-- 			      	<td>Directions:  </td> -->
 			      	<td>
 				      	<form:label path="directions">Directions: 
 						<form:errors path="directions"/>

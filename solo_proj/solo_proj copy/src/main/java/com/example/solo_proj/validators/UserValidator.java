@@ -1,11 +1,11 @@
-package com.examples.solo_proj.validators;
+package com.example.solo_proj.validators;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 
-import com.example.solo_proj.repositorites.UserRepository;
-import com.examples.solo_proj.models.User;
+import com.example.solo_proj.models.User;
+import com.example.solo_proj.repositories.UserRepository;
 
 @Component
 public class UserValidator {

@@ -1,11 +1,11 @@
-package com.example.solo_proj.repositorites;
+package com.example.solo_proj.repositories;
 
 import java.util.List;
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import com.examples.solo_proj.models.Recipe;
+import com.example.solo_proj.models.Recipe;
 
 @Repository
 public interface RecipeRepository extends CrudRepository <Recipe, Long> {

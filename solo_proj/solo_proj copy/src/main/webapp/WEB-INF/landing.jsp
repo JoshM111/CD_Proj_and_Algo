@@ -59,6 +59,21 @@
 			<button class="btn btn-danger">Login</button>	
 		</form>
 </div>
+<%-- <div class="col">
+		<h1>Login</h1>
+		<form:form action="/login" method="POST" modelAttribute="user">
+			<div>
+				<form:label path="loginEmail">Email:</form:label>
+				<form:errors path="loginEmail"/>
+				<form:input type="email" path="loginEmail"/>
+			</div>
+			<div>
+				<form:label path="loginPassword">Password: </form:label>
+				<form:errors path="loginPassword"/>
+				<form:input type="password" path="loginPassword"/>
+			</div>
+		</form:form>
+</div> --%>
 </div>
 </body>
 </html>

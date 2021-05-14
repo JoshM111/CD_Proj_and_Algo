@@ -42,7 +42,7 @@
 </c:forEach>
 </tbody>
 </table>
-<a href="/recipe/new" class="btn btn-danger">Create an Recipe</a>
+<a href="/recipes/new" class="btn btn-danger">Create a Recipe</a>
 </div>
 </body>
 </html>
