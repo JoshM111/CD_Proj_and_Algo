@@ -43,6 +43,7 @@
 </tbody>
 </table>
 <a href="/recipes/new" class="btn btn-danger">Create a Recipe</a>
+<a href="/logout" class="btn btn-danger">Logout</a>
 </div>
 </body>
 </html>

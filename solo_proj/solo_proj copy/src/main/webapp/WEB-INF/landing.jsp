@@ -11,6 +11,22 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 <body>
 <div class="container">
+		<div class="col">
+			<h4>Login</h4>
+			${ loginError }
+			<form method="POST" action="/login">
+			<div class="form-group">
+			<label>Email:</label>
+			<input class="form-control" type="email" name="loginEmail">
+			</div>
+			<form method="POST" action="/login">
+			<div class="form-group">
+			<label>Password:</label>
+			<input class="form-control" type="password" name="loginPassword">
+			</div>
+			<button class="btn btn-danger">Login</button>	
+			</form>
+		</div>
 <div class="col" style="display: inline-block">
 <h1>Register</h1>
 	<form:form action="/register" method="POST" modelAttribute="user">
@@ -41,39 +57,8 @@
 			</div>	
 			<input class="btn btn-danger" type="submit" value="Submit"/>
 	</form:form>
+	
 </div>
-<div class="col">
-		<h1>Login</h1>
-		${ loginError }
-			<form method="POST" action="/login">
-		<div class="form-group">
-			<label>Email:</label>
-			<input class="form-control" type="email" name="loginEmail">
-		</div>
-		</form>
-		<form method="POST" action="/login">
-		<div class="form-group">
-			<label>Password:</label>
-			<input class="form-control" type="password" name="loginPassword">
-		</div>
-			<button class="btn btn-danger">Login</button>	
-		</form>
-</div>
-<%-- <div class="col">
-		<h1>Login</h1>
-		<form:form action="/login" method="POST" modelAttribute="user">
-			<div>
-				<form:label path="loginEmail">Email:</form:label>
-				<form:errors path="loginEmail"/>
-				<form:input type="email" path="loginEmail"/>
-			</div>
-			<div>
-				<form:label path="loginPassword">Password: </form:label>
-				<form:errors path="loginPassword"/>
-				<form:input type="password" path="loginPassword"/>
-			</div>
-		</form:form>
-</div> --%>
 </div>
 </body>
 </html>

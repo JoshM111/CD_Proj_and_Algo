@@ -1,5 +1,6 @@
 package com.example.solo_proj.controllers;
 
+
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -16,10 +17,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.example.solo_proj.models.Ingredient;
 import com.example.solo_proj.models.Recipe;
 import com.example.solo_proj.models.User;
-import com.example.solo_proj.services.IngredientService;
 import com.example.solo_proj.services.RecipeService;
 import com.example.solo_proj.services.UserService;
 import com.example.solo_proj.validators.UserValidator;
@@ -32,12 +31,7 @@ public class HomeController {
 	private UserValidator validator;
 	@Autowired
 	private RecipeService rService;
-	@Autowired
-	private IngredientService iService;
-//	questions that I need to ask //
-//	How can I incorporate tags as a search feature?- m2m relationship?
-//	How can I allow the Users to add more ingredients to the recipe line instead of having a fixed amount
-//	Landing Page- with register and login
+
 	@GetMapping("/")
 	public String index(@ModelAttribute("user") User user) {
 //		List<User> user = this.uService.allUsers();
@@ -74,7 +68,7 @@ public class HomeController {
 	@GetMapping("/recipes")
 	public String dashboard(Model viewModel, HttpSession session) {
 		Long userId = (long)session.getAttribute("user__id");
-		User user=this.uService.find(userId);
+		User user= this.uService.find(userId);
 		List<Recipe> recipes= this.rService.getAllRecipes();
 		viewModel.addAttribute("allRecipes", recipes);
 		viewModel.addAttribute("user", user);
@@ -87,8 +81,6 @@ public class HomeController {
 	@PostMapping("/recipes/new/post")
 	public String addRecipe(@Valid @ModelAttribute("recipe") Recipe recipe, BindingResult result, HttpSession session, Model viewModel) {
 		Long userId = (long)session.getAttribute("user__id");
-//		Long recipeId = (long)session.getAttribute("recipe__id");
-//		Recipe rec=this.rService.findRecipe(recipeId);
 		User user=this.uService.find(userId);
 		
 		if(result.hasErrors()) {
@@ -97,33 +89,16 @@ public class HomeController {
 			viewModel.addAttribute("user", user);
 
 			return "new.jsp";
-//		}else if(resultIng.hasErrors()){
-//			List<Ingredient> ings= this.iService.getAllIngs();
-//			viewModel.addAttribute("allIngs", ings);
-//			viewModel.addAttribute("recipe", rec);
-//			return "new.jsp";
 		}else {
-//			Long ingId = (long)session.getAttribute("ingredient__id");
-//			List<ingName> ingName = (String)session.getAttribute("ingredient__name");
-//			List<ingMm> ingMm = (String)session.getAttribute("ingredient__measurement");
-//			List<ingAmnt> ingAmnt = (double)session.getAttribute("ingredient__amount");
 			recipe.setCreator(user);
-//			ing.setItem(recipe);
-//			this.iService.createIng(ing);
 			this.rService.createRecipe(recipe);
 			return "redirect:/recipes";
 		}
-//		for() {
-//		    name  = sessionStorage.getAttribute("name");
-//		    for ( x = 0; x  < name.length; x ++) {
-//		        createIngredient(name[x], quantity[x]);
-//		    })
 	}
 //	add jquery
 	@GetMapping("/recipes/{id}")
-	public String show(@PathVariable("id") Long id, Model viewModel, @ModelAttribute("recipe" + "ingredient") Recipe recipe, Ingredient ing) {
+	public String show(@PathVariable("id") Long id, Model viewModel, @ModelAttribute("recipe") Recipe recipe) {
 		viewModel.addAttribute("recipe", this.rService.getOneRecipe(id));
-		viewModel.addAttribute("ingredient", this.iService.getOneIng(id));
 		return "show.jsp";
 	}
 //	
@@ -141,7 +116,7 @@ public class HomeController {
 	@PostMapping("/recipes/{id}/edit")
 	public String postEdit(@Valid @ModelAttribute("recipe") Recipe recipe, BindingResult result, Model viewModel, @PathVariable("id") Long id) {
 		if(result.hasErrors()) {
-			viewModel.addAttribute("idea", this.rService.getOneRecipe(id));
+			viewModel.addAttribute("recipe", this.rService.getOneRecipe(id));
 			return "edit.jsp";
 		}
 		this.rService.updateRecipe(id, recipe);
@@ -165,6 +140,20 @@ public class HomeController {
 		this.rService.removeLiker(liker, likedRecipe);
 		return "redirect:/recipes";
 	}
+//	protected Map referenceData(HttpServletRequest request) throws Exception {
+//		Map referenceData = new HashMap();
+//		Map<String,String> qty = new LinkedHashMap<String, String>();
+//		qty.put("oz", "Ounces");
+//		qty.put("#", "Pounds");
+//		qty.put("c", "Cups");
+//		qty.put("qt(s)", "Quart(s)");
+//		qty.put("gl(s)", "Gallon(s");
+//		qty.put("t", "teaspoon");
+//		qty.put("T", "Tablespoon");
+//		qty.put("g", "Gram(s)");
+//		referenceData.put("qtyList", qty);
+//		return referenceData;
+//	}
 //	/ingredients
 //	@GetMapping("/ingredients")
 //	public String ingredient(Model viewModel, HttpSession session) {
